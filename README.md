@@ -5,5 +5,6 @@ Requirements :
 - Java
 - Selenium
 - WebDriver Manager 
+- JUnit
 
 Note : Build the pom.xml to download all necessary sources
