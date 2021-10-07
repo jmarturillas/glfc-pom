@@ -13,23 +13,27 @@ public class Invoker {
 
     @BeforeAll
     static void setUp() {
-         WebDriverManager.chromedriver().setup();
+        // It is possible to create a decision maker
+        // as to which browser will be used.
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
     public void setUpTest() {
+        // In this case we will be using Chrome
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
-//
-//    @AfterEach
-//    public void teardown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
+
+    @AfterEach
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 
     public void goToHomePage() {
+        // This can be parameterized based on requirement
         this.driver.get("https://www.amazon.com");
     }
 
