@@ -10,7 +10,7 @@ import java.util.List;
 public class AmazonIPhonePricing extends Invoker {
 
     @Test
-    public void TryThis() {
+    public void navigateThroughAmazon() {
         LandingPage landingPage = new LandingPage(this.driver);
 
         this.goToHomePage();
