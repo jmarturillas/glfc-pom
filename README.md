@@ -1,6 +1,6 @@
 # GLFC-pom (Part 2A)
 
-Requirements :
+**Requirements :**
 
 - Java
 - Selenium
@@ -8,18 +8,18 @@ Requirements :
 - JUnit
 - Maven
 
-Note : Build the pom.xml to download all necessary sources
+**Note : Build the pom.xml to download all necessary sources**
 
-Sample result : 
+**Sample result :** 
 
-![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/Capture.PNG)
+![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/images/13.png)
 
-Step to run in command line : 
+**Step to run in command line :**
 `mvn clean test`
 
-NOTE : When runnnig in command line, make sure that your maven home is set in your Environment Variables
+**NOTE : When runnnig in command line, make sure that your maven home is set in your Environment Variables**
 
-Steps to run on IDE : 
+**Steps to run on IDE :** 
 
 ![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/images/1.png)
 ![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/images/2.png)
