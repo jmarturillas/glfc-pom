@@ -1,5 +1,9 @@
 # GLFC-pom (Part 2A)
 
+**Sample result :** 
+
+![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/images/13.png)
+
 **Requirements :**
 
 - Java
@@ -10,12 +14,15 @@
 
 **Note : Build the pom.xml to download all necessary sources**
 
-**Sample result :** 
-
-![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/images/13.png)
+To build the pom.xml in IntelliJ: 
+1. Right click at `pom.xml`
+2. Click on `Maven`
+3. Select `Reload project`
+4. The IDE will download the needed resources
 
 **Step to run in command line :**
-`mvn clean test`
+In your command line, type `mvn clean test` and hit Enter. 
+The build will start and a browser will be opened.
 
 **NOTE : When runnnig in command line, make sure that your maven home is set in your Environment Variables**
 
