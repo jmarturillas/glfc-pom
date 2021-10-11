@@ -1,4 +1,5 @@
 import base.Invoker;
+import com.relevantcodes.extentreports.LogStatus;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -22,10 +23,15 @@ public class TestAmazonIPhonePricing extends Invoker {
 
         // Navigate through the Amazon and set pricing range
         this.goToHomePage();
+        extentTest.log(LogStatus.INFO, "Navigated to Amazon");
         landingPage.enterSearchItem("iPhone");
+        extentTest.log(LogStatus.INFO, "Typed iPhone");
         landingPage.clickSearch();
+        extentTest.log(LogStatus.INFO, "Clicked search");
         landingPage.clickCellPhonesDept();
+        extentTest.log(LogStatus.INFO, "Selected Cellphones Dept.");
         landingPage.setPriceRange("400", "500");
+        extentTest.log(LogStatus.INFO, "Set price range to 400 ~ 500");
 
         ArrayList<String> pricing = new ArrayList<String>();
         ArrayList<Double> priceDouble = new ArrayList<Double>();
@@ -35,12 +41,16 @@ public class TestAmazonIPhonePricing extends Invoker {
             pricing.add(elem.getAttribute("innerHTML"));
         }
 
+        extentTest.log(LogStatus.INFO, "Got all the pricing.");
+
         // Cut the result into first 5 items only
         for (int counter = 0; counter < 5; counter++) {
             String price = pricing.get(counter).replaceAll("[^\\d.]+", "");
             Double thisPrice = Double.parseDouble(price);
             priceDouble.add(thisPrice);
         }
+
+        extentTest.log(LogStatus.INFO, "Filtered to 5 items only");
 
         // Sort the item per price from highest to lowest
         priceDouble.sort(Comparator.reverseOrder());
@@ -51,6 +61,7 @@ public class TestAmazonIPhonePricing extends Invoker {
         for (int counter = 0; counter < 5; counter++ ) {
             String itemName = item(priceDouble.get(counter).toString()).getText();
             System.out.println("$" + priceDouble.get(counter) + " | " + itemName);
+            extentTest.log(LogStatus.INFO, "$" + priceDouble.get(counter) + " | " + itemName);
         }
 
     }
