@@ -6,6 +6,7 @@ Requirements :
 - Selenium
 - WebDriver Manager 
 - JUnit
+- Maven
 
 Note : Build the pom.xml to download all necessary sources
 
@@ -13,7 +14,12 @@ Sample result :
 
 ![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/Capture.PNG)
 
-Steps to run : 
+Step to run in command line : 
+`mvn clean test`
+
+NOTE : When runnnig in command line, make sure that your maven home is set in your Environment Variables
+
+Steps to run on IDE : 
 
 ![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/images/1.png)
 ![alt text](https://github.com/jmarturillas/glfc-pom/blob/main/images/2.png)

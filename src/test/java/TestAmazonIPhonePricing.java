@@ -57,13 +57,11 @@ public class TestAmazonIPhonePricing extends Invoker {
 
         System.out.println("Sorted price as list : " + priceDouble);
 
-        System.out.println("============  Below is the name of the items sorted by price : ============");
+        extentTest.log(LogStatus.INFO, "============  Below is the name of the items sorted by price : ============");
         for (int counter = 0; counter < 5; counter++ ) {
             String itemName = item(priceDouble.get(counter).toString()).getText();
-            System.out.println("$" + priceDouble.get(counter) + " | " + itemName);
             extentTest.log(LogStatus.INFO, "$" + priceDouble.get(counter) + " | " + itemName);
         }
-
     }
 
     // Getting the item name based on its price.
