@@ -13,10 +13,10 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class AmazonIPhonePricing extends Invoker {
+public class TestAmazonIPhonePricing extends Invoker {
 
     @Test
-    public void navigateThroughAmazon() throws NumberFormatException, ParseException {
+    public void TestPrice() throws NumberFormatException, ParseException {
         // Instantiate the page factory
         LandingPage landingPage = new LandingPage(this.driver);
 
