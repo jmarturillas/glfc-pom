@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class LandingPage {
 
@@ -57,7 +58,9 @@ public class LandingPage {
         goPrice.click();
     }
 
-    public List<WebElement> getSearchResult() {
+    public List<WebElement> getSearchResult() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Thread.sleep(2000);
         return searchResult;
     }
 }

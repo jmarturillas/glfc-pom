@@ -17,7 +17,7 @@ import java.util.List;
 public class TestAmazonIPhonePricing extends Invoker {
 
     @Test
-    public void TestPrice() throws NumberFormatException, ParseException {
+    public void TestPrice() throws NumberFormatException, ParseException, InterruptedException {
         // Instantiate the page factory
         LandingPage landingPage = new LandingPage(this.driver);
 
