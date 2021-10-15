@@ -19,6 +19,15 @@ public class TestAmazonIPhonePricing extends Invoker {
     /*
     * Extended exam pseudocode :
     *
+    * NOTE :
+    * Steps 1 to 6 are declaration steps
+    *   - declaration of new class
+    *   - declaration of new methods
+    *
+    * Steps 7 - 10 are the steps for implementation inside the test class (TestAmazonIPhonePricing.java)
+    *   - instantiation of the new class created from Step 1 to 6
+    *   - usage of method created on Step 1 to 6
+    *
     * Put the ff. code in a separate Util file
     *   - File name could be PriceRangeAssessment.java
     *   - with class name PriceRangeAssessment()
@@ -40,7 +49,7 @@ public class TestAmazonIPhonePricing extends Invoker {
     * 5. Create a method that will get the item results
     *   method name : List<WebElement> getPriceResult(String priceRange)
     *   method body : (we're setting it to get the items from price range up to 50)
-    *       getPriceResult(upTo50).click()
+    *       getPriceResult(upTo50).click()  // This is the implementation of step 3
     *       <List> WebElements itemsPrice = get price of each item result
     *       return itemsPrice
     *
@@ -49,25 +58,25 @@ public class TestAmazonIPhonePricing extends Invoker {
     *   method body :
     *       for (WebElement elem : elements)
     *           if (upToValue == upTo50)
-    *               if elem <= upToValue { print "PASS : the item is within the {upToValue}" }
-    *               else { print "FAIL : the item is beyond the {upToValue}" }
+    *               if elem.price() <= upToValue { print "PASS : the item is within the {upToValue}" }
+    *               else { print "FAIL : the item '{elem.itemName()}' price is beyond the {upToValue}" }
     *           else if (upToValue == beyondOrEqual600)
-    *               if elem >= upToValue { print "PASS : the item is beyond the {upToValue}" }
-    *               else { print "FAIL :the item is less than the {upToValue}" }
+    *               if elem.price() >= upToValue { print "PASS : the item is beyond the {upToValue}" }
+    *               else { print "FAIL :the item '{elem.itemName()}'price is less than the {upToValue}" }
     *           else
     *               if elem <= upToValue { print "PASS : the item is within the {upToValue}" }
-    *               else { print "FAIL : the item is beyond the {upToValue}" }
+    *               else { print "FAIL : the item '{elem.itemName()}' price is beyond the {upToValue}" }
     *
     * 7. Import the PriceRangeAssessment to TestAmazonIPhonePricing.java
     *   - instantiate PriceRangeAssessment priceRangeAst = new PriceRangeAssessment()
     *
-    * 8. Remove code frome line with "extentTest.log(LogStatus.INFO, "Got all the pricing.");"
+    * 8. Remove code from 109 to 129 and replace with the code below :
     * 9. List<WebElements> elements = priceRangeAst.getPriceResult(priceRangeAst.upTo50)
     *
     * 10. call priceRangeAst.isWithinRange(elements, priceRangeAst.upTo50)
     * Loop through the list of elements
     *           for (WebElement itemPrice : itemsPrice)
-    *               isWithinRange(itemsPrice, upTo50) "See below step 6"
+    *               isWithinRange(itemsPrice, upTo50) "See step 6"
     * */
 
     @Test
@@ -95,31 +104,29 @@ public class TestAmazonIPhonePricing extends Invoker {
             pricing.add(elem.getAttribute("innerHTML"));
         }
 
+        extentTest.log(LogStatus.INFO, "Got all the pricing.");
 
+        // Cut the result into first 5 items only
+        for (int counter = 0; counter < 5; counter++) {
+            String price = pricing.get(counter).replaceAll("[^\\d.]+", "");
+            Double thisPrice = Double.parseDouble(price);
+            priceDouble.add(thisPrice);
+        }
 
-//        extentTest.log(LogStatus.INFO, "Got all the pricing.");
-//
-//        // Cut the result into first 5 items only
-//        for (int counter = 0; counter < 5; counter++) {
-//            String price = pricing.get(counter).replaceAll("[^\\d.]+", "");
-//            Double thisPrice = Double.parseDouble(price);
-//            priceDouble.add(thisPrice);
-//        }
-//
-//        extentTest.log(LogStatus.INFO, "Filtered to 5 items only");
-//
-//        // Sort the item per price from highest to lowest
-//        priceDouble.sort(Comparator.reverseOrder());
-//
-//        System.out.println("Sorted price as list : " + priceDouble);
-//
-//        extentTest.log(LogStatus.INFO, "============  Below is the name of the items sorted by price : ============");
-//        for (int counter = 0; counter < 5; counter++ ) {
-//
-//            String itemName = item(priceDouble.get(counter).toString()).getText();
-//            extentTest.log(LogStatus.INFO, "$" + priceDouble.get(counter) + " | " + itemName);
-//
-//        }
+        extentTest.log(LogStatus.INFO, "Filtered to 5 items only");
+
+        // Sort the item per price from highest to lowest
+        priceDouble.sort(Comparator.reverseOrder());
+
+        System.out.println("Sorted price as list : " + priceDouble);
+
+        extentTest.log(LogStatus.INFO, "============  Below is the name of the items sorted by price : ============");
+        for (int counter = 0; counter < 5; counter++ ) {
+
+            String itemName = item(priceDouble.get(counter).toString()).getText();
+            extentTest.log(LogStatus.INFO, "$" + priceDouble.get(counter) + " | " + itemName);
+
+        }
     }
 
     // Getting the item name based on its price.
