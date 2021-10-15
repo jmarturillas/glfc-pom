@@ -142,9 +142,7 @@ public class TestAmazonIPhonePricing extends Invoker {
         // This webelement parsing was not included in the LandingPage.java Pagefactory.
         // As Pagefactory doesn't support passing of parameters.
         // In this use case, we'll need to pass parameters such as `itemPrice`
-        return this.driver.findElement(By.xpath("//div[@class='s-main-slot s-result-list s-search-results sg-row']" +
-                "/div/div/span/div/div/div[2]/div[3]/div/a/span/span[@class='a-offscreen']" +
-                "[contains(text(), '" + itemPrice + "')]/parent::span/parent::a/parent::div/" +
-                "parent::div/parent::div/div/h2/a/span"));
+        return this.driver.findElement(By.xpath("//div[@class='s-main-slot s-result-list s-search-results sg-row']/div/div/span/div/div/div[2]/div[2]/div/div/div[3]/div/div/div/div/a/span/span[1][contains(text(), '" + itemPrice + "')]/parent::span/parent::a/parent::div/parent::div/parent::div/parent::div/parent::div/parent::div/div/h2/a/span"));
+
     }
 }
