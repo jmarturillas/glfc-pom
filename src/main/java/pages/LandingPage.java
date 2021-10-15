@@ -32,6 +32,7 @@ public class LandingPage {
     WebElement goPrice;
 
     @FindBys({@FindBy(xpath="//div[@class='s-main-slot s-result-list s-search-results sg-row']/div/div/span/div/div/div[2]/div[3]/div/a/span/span[@class='a-offscreen']")})
+
     public List<WebElement> searchResult;
 
 
